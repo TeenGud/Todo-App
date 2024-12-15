@@ -1,0 +1,45 @@
+{
+  "name": "todoappreact",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write **/*.*",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "**/*.*": [
+      "npm run lint",
+      "npm run format",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "prop-types": "^15.6.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "globals": "^15.13.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.1.0",
+    "prettier": "^1.12.1",
+    "vite": "^6.0.1"
+  }
+}
