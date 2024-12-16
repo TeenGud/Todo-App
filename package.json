@@ -13,11 +13,9 @@
     "test": ""
   },
   "lint-staged": {
-    "src/**/*.{js,html,jsx.css}": [
-      "npm run lint",
-      "npm run format",
-      "git add"
-    ]
+    "src/**/*.{js,html,jsx.css}": "npm run lint",
+    "src/**/*.{js,html,jsx,css}": "npm run format",
+    "src/**/*.{js,html,jsx}": "git add"
   },
   "dependencies": {
     "date-fns": "^4.1.0",
