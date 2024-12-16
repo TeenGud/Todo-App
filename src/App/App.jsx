@@ -6,13 +6,7 @@ import NewTaskForm from '../NewTaskForm';
 import TaskList from '../TaskList';
 
 const App = () => {
-
-  
-  const [tasks, setTasks] = useState([
-    { description: 'Have a beer', time: new Date(), active: true, uniqKey: useId(), hide: false },
-    { description: 'Drink vodka', time: new Date(), active: true, uniqKey: useId(), hide: false },
-    { description: 'Suicide', time: new Date(), active: true, uniqKey: useId(), hide: false },
-  ]);
+  const [tasks, setTasks] = useState([]);
   const handleDestroy = key => {
     setTasks(tasks.filter(task => task.uniqKey !== key));
   };
