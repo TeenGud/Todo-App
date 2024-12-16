@@ -13,8 +13,8 @@
     "test": ""
   },
   "lint-staged": {
-    "*.{js,jsx,html}": "npm run lint",
-    "*.{js,jsx,html,css}": "npm run format"
+    "**/*.{js,jsx}": "npm run lint",
+    "**/*.{js,jsx,html,css}": "npm run format"
   },
   "dependencies": {
     "date-fns": "^4.1.0",

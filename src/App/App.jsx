@@ -6,7 +6,8 @@ import NewTaskForm from '../NewTaskForm';
 import TaskList from '../TaskList';
 
 const App = () => {
-  const a = 0;
+
+  
   const [tasks, setTasks] = useState([
     { description: 'Have a beer', time: new Date(), active: true, uniqKey: useId(), hide: false },
     { description: 'Drink vodka', time: new Date(), active: true, uniqKey: useId(), hide: false },
