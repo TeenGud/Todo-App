@@ -2,6 +2,7 @@ import './TaskList.css';
 import Task from '../Task/Task';
 
 const TaskList = ({ tasks, setTasks, handleDestroy }) => {
+  const a = 0;
   const elements = tasks.map((task, id) => (
     <Task
       tasks={tasks}
