@@ -13,7 +13,7 @@
     "test": ""
   },
   "lint-staged": {
-    "src/**/*.{js,html,jsx.css}": "npm run lint",
+    "src/**/*.jsx": "npm run lint",
     "src/**/*.{js,html,jsx,css}": "npm run format",
     "src/**/*.{js,html,jsx}": "git add"
   },
