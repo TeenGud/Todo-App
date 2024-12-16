@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import './Task.css';
 import { formatDistanceToNowStrict } from 'date-fns';
 import PropTypes from 'prop-types';
+import './Task.css';
 
 const Task = ({ description, tasks, setTasks, active, time, handleDestroy, id, uniqId, hide }) => {
   const [isEdit, setIsEdit] = useState(false);
@@ -44,11 +44,11 @@ const Task = ({ description, tasks, setTasks, active, time, handleDestroy, id, u
           <span className="description">{description}</span>
           <span className="created">created {formatDistanceToNowStrict(time)}</span>
         </label>
-        <button className="icon icon-edit" onClick={handleEdit}></button>
-        <button className="icon icon-destroy" onClick={() => handleDestroy(uniqId)}></button>
+        <button className="icon icon-edit" onClick={handleEdit} />
+        <button className="icon icon-destroy" onClick={() => handleDestroy(uniqId)} />
       </div>
       <form onSubmit={handleSubmit}>
-        <input type="text" className="edit" value={editText} onChange={e => setEditText(e.target.value)}></input>
+        <input type="text" className="edit" value={editText} onChange={e => setEditText(e.target.value)} />
       </form>
     </li>
   ) : (

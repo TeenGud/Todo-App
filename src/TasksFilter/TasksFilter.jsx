@@ -8,16 +8,14 @@ const TasksFilter = ({ tasks, setTasks }) => {
   const activeTasks = tasks.map(task => {
     if (task.active) {
       return { ...task, hide: false };
-    } else {
-      return { ...task, hide: true };
     }
+    return { ...task, hide: true };
   });
   const completedTasks = tasks.map(task => {
     if (task.active) {
       return { ...task, hide: true };
-    } else {
-      return { ...task, hide: false };
     }
+    return { ...task, hide: false };
   });
   const handleAllClick = () => {
     setAllButton('selected');

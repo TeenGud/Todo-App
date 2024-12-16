@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
-    "format": "prettier --write **/*.*",
-    "precommit": "lint-staged"
+    "lint": "eslint src/**/*.{js,html,jsx.css}",
+    "lint:fix": "eslint --fix src/**/*.{js,html,jsx.css}",
+    "format": "prettier --write src/**/*.{js,html,jsx.css}",
+    "precommit": "lint-staged",
+    "prepare": "husky install"
   },
   "lint-staged": {
-    "**/*.*": [
+    "src/**/*.{js,html,jsx.css}": [
       "npm run lint",
       "npm run format",
       "git add"
@@ -37,7 +38,7 @@
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
     "globals": "^15.13.0",
-    "husky": "^0.14.3",
+    "husky": "^8.0.0",
     "lint-staged": "^7.1.0",
     "prettier": "^1.12.1",
     "vite": "^6.0.1"

@@ -1,9 +1,9 @@
 import './App.css';
+import { useState, useId } from 'react';
+
 import Footer from '../Footer';
 import NewTaskForm from '../NewTaskForm';
 import TaskList from '../TaskList';
-import { useState } from 'react';
-import { useId } from 'react';
 
 const App = () => {
   const [tasks, setTasks] = useState([

@@ -5,12 +5,11 @@ const Footer = ({ tasks, setTasks }) => {
   const handleClearClick = () => {
     setTasks(tasks.filter(task => task.active));
   };
-  let count = tasks.reduce((acc, task) => {
+  const count = tasks.reduce((acc, task) => {
     if (task.active) {
       return 1 + acc;
-    } else {
-      return acc;
     }
+    return acc;
   }, 0);
   return (
     <footer className="footer">
