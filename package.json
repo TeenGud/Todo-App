@@ -9,7 +9,8 @@
     "lint:fix": "eslint --fix src/**/*.{js,html,jsx.css}",
     "format": "prettier --write src/**/*.{js,html,jsx.css}",
     "precommit": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": ""
   },
   "lint-staged": {
     "src/**/*.{js,html,jsx.css}": [
