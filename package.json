@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint src/**/*.{js,html,jsx.css}",
-    "lint:fix": "eslint --fix src/**/*.{js,html,jsx.css}",
-    "format": "prettier --write src/**/*.{js,html,jsx.css}",
+    "lint": "eslint **/*.{js,jsx}",
+    "lint:fix": "eslint --fix **/*.{js,jsx}",
+    "format": "prettier --write **/*.{js,jsx,html,css}",
     "precommit": "lint-staged",
     "prepare": "husky install",
     "test": ""
