@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { formatDistanceToNowStrict } from 'date-fns';
 import PropTypes from 'prop-types';
 import './Task.css';
@@ -6,6 +6,14 @@ import './Task.css';
 const Task = ({ description, tasks, setTasks, active, time, handleDestroy, id, uniqId, hide }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [editText, setEditText] = useState(description);
+  const [timePassed, setTimePassed] = useState(formatDistanceToNowStrict(time));
+
+  useEffect(() => {
+    const timerID = setInterval(() => {
+      setTimePassed(formatDistanceToNowStrict(time));
+    }, 1000);
+    return () => clearInterval(timerID);
+  }, [timePassed]);
   const handleChange = e => {
     if (active) {
       setTasks([
@@ -29,6 +37,9 @@ const Task = ({ description, tasks, setTasks, active, time, handleDestroy, id, u
   };
   const handleSubmit = e => {
     e.preventDefault();
+    if (!editText.trim().length) {
+      return;
+    }
     setTasks([
       ...tasks.slice(0, id),
       { description: editText, time, active: true, uniqKey: uniqId, hide: false },
@@ -42,7 +53,7 @@ const Task = ({ description, tasks, setTasks, active, time, handleDestroy, id, u
         <input className="toggle" type="checkbox" onChange={handleChange} checked={!active} />
         <label>
           <span className="description">{description}</span>
-          <span className="created">created {formatDistanceToNowStrict(time)}</span>
+          <span className="created">created {timePassed}</span>
         </label>
         <button className="icon icon-edit" onClick={handleEdit} />
         <button className="icon icon-destroy" onClick={() => handleDestroy(uniqId)} />

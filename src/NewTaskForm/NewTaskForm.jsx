@@ -4,9 +4,12 @@ const NewTaskForm = ({ tasks, setTasks }) => {
   const [value, setValue] = useState('');
   const handleSubmit = e => {
     e.preventDefault();
+    if (!value.trim().length) {
+      return;
+    }
     setTasks([
       ...tasks,
-      { description: value, time: new Date(), active: true, uniqKey: String(new Date()), hide: false },
+      { description: value, time: new Date(), active: true, uniqKey: String(Date.now()), hide: false },
     ]);
     setValue('');
   };
