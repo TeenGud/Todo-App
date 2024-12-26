@@ -14,6 +14,8 @@ const TaskList = ({ tasks, setTasks, handleDestroy }) => {
       id={id}
       uniqId={task.uniqKey}
       hide={task.hide}
+      minutes={task.minutes}
+      seconds={task.seconds}
     />
   ));
   return <ul className="todo-list">{elements}</ul>;

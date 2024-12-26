@@ -1,12 +1,18 @@
 import { useEffect, useState } from 'react';
 import { formatDistanceToNowStrict } from 'date-fns';
 import PropTypes from 'prop-types';
-import './Task.css';
 
-const Task = ({ description, tasks, setTasks, active, time, handleDestroy, id, uniqId, hide }) => {
+import './Task.css';
+import Timer from '../Timer';
+
+const Task = ({ description, tasks, setTasks, active, time, handleDestroy, id, uniqId, hide, minutes, seconds }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [editText, setEditText] = useState(description);
   const [timePassed, setTimePassed] = useState(formatDistanceToNowStrict(time));
+
+  const [icon, setIcon] = useState('icon-play');
+  const [timer, setTimer] = useState(Number(minutes) * 60 + Number(seconds));
+  const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
     const timerID = setInterval(() => {
@@ -18,17 +24,49 @@ const Task = ({ description, tasks, setTasks, active, time, handleDestroy, id, u
     if (active) {
       setTasks([
         ...tasks.slice(0, id),
-        { description, time, active: false, uniqKey: uniqId, hide: false },
+        { description, time, active: false, uniqKey: uniqId, hide: false, timer, minutes, seconds },
         ...tasks.slice(id + 1),
       ]);
+      setIsRunning(false);
+      setIcon('icon-play');
     } else {
       setTasks([
         ...tasks.slice(0, id),
-        { description, time, active: true, uniqKey: uniqId, hide: false },
+        { description, time, active: true, uniqKey: uniqId, hide: false, timer, minutes, seconds },
         ...tasks.slice(id + 1),
       ]);
     }
   };
+  useEffect(() => {
+    if (Number(minutes) > 0 || Number(seconds) > 0) {
+      let interval;
+      if (isRunning) {
+        interval = setInterval(() => {
+          if (timer > 0) {
+            setTimer(prevTime => {
+              if (prevTime > 0) {
+                return prevTime - 1;
+              }
+              return 0;
+            });
+          }
+        }, 1000);
+      } else if (!isRunning || timer === 0) {
+        clearInterval(interval);
+      }
+      return () => clearInterval(interval);
+    }
+    let interval;
+    if (isRunning) {
+      interval = setInterval(() => {
+        setTimer(prevTime => prevTime + 1);
+      }, 1000);
+    } else if (!isRunning) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isRunning]);
+
   const handleEdit = () => {
     if (!active) {
       return;
@@ -42,7 +80,7 @@ const Task = ({ description, tasks, setTasks, active, time, handleDestroy, id, u
     }
     setTasks([
       ...tasks.slice(0, id),
-      { description: editText, time, active: true, uniqKey: uniqId, hide: false },
+      { description: editText, time, active: true, uniqKey: uniqId, hide: false, timer, minutes, seconds },
       ...tasks.slice(id + 1),
     ]);
     setIsEdit(false);
@@ -52,6 +90,14 @@ const Task = ({ description, tasks, setTasks, active, time, handleDestroy, id, u
       <div className="view">
         <input className="toggle" type="checkbox" onChange={handleChange} checked={!active} />
         <label>
+          <Timer
+            timer={timer}
+            setTimer={setTimer}
+            icon={icon}
+            setIcon={setIcon}
+            isRunning={isRunning}
+            setIsRunning={setIsRunning}
+          />
           <span className="description">{description}</span>
           <span className="created">created {timePassed}</span>
         </label>
