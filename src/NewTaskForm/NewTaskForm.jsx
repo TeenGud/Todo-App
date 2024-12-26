@@ -16,7 +16,7 @@ const NewTaskForm = ({ tasks, setTasks }) => {
 
   return (
     <header className="header">
-      <h1>todos</h1>
+      <h1>todos with timer</h1>
       <form onSubmit={handleSubmit}>
         <input
           className="new-todo"
