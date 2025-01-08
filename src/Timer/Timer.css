@@ -11,15 +11,25 @@
 
 .icon-pause:after {
   content: '⏸';
+  position: absolute;
+  top: 2px;
+  left: -18px;
 }
 
 .icon-play:after {
   content: '▶';
+  position: absolute;
+  top: 5px;
+  left: -17px;
 }
 
 .todo-list li label .description-timer {
+  display: flex;
+  align-items: center;
   font-size: 13px;
   color: gray;
+  width: 60px;
+  position: relative;
 }
 
 .todo-list li label .title {

@@ -90,6 +90,7 @@ const Task = ({ description, tasks, setTasks, active, time, handleDestroy, id, u
       <div className="view">
         <input className="toggle" type="checkbox" onChange={handleChange} checked={!active} />
         <label>
+          <span className="description">{description}</span>
           <Timer
             timer={timer}
             setTimer={setTimer}
@@ -98,7 +99,6 @@ const Task = ({ description, tasks, setTasks, active, time, handleDestroy, id, u
             isRunning={isRunning}
             setIsRunning={setIsRunning}
           />
-          <span className="description">{description}</span>
           <span className="created">created {timePassed}</span>
         </label>
         <button className="icon icon-edit" onClick={handleEdit} />

@@ -48,3 +48,9 @@
 .todo-list li.editing .view {
   display: none;
 }
+.created {
+  width: 130px;
+}
+.description {
+  width: 200px;
+}
